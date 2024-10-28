@@ -1,0 +1,43 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="bg-gray-100">
+    <ActionBar title="Add Meal" class="bg-green-500 text-white">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Image Preview -->
+            <Image src="{{ mealImage }}" height="200" class="rounded-lg mb-4" visibility="{{ mealImage ? 'visible' : 'collapsed' }}" stretch="aspectFill" />
+
+            <!-- Camera Controls -->
+            <GridLayout columns="*, *" class="mb-4">
+                <Button text="Take Photo" tap="{{ onTakePhoto }}" class="m-1 bg-green-500 text-white p-4 rounded-lg" col="0" />
+                <Button text="Choose Photo" tap="{{ onSelectPhoto }}" class="m-1 bg-green-500 text-white p-4 rounded-lg" col="1" />
+            </GridLayout>
+
+            <!-- Loading Indicator -->
+            <ActivityIndicator busy="{{ isAnalyzing }}" class="mb-4" />
+
+            <!-- Analysis Results -->
+            <StackLayout visibility="{{ analysisComplete ? 'visible' : 'collapsed' }}" class="mb-4">
+                <Label text="Detected Foods" class="text-lg font-bold mb-2" />
+                <ListView items="{{ detectedFoods }}" class="mb-4">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="*, auto" class="p-2">
+                            <StackLayout col="0">
+                                <Label text="{{ name }}" class="font-semibold" />
+                                <Label text="{{ portion }}" class="text-gray-600" />
+                            </StackLayout>
+                            <Label text="{{ calories }} cal" class="text-green-500" col="1" />
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+
+                <Label text="Total Calories: {{ totalCalories }}" class="text-xl font-bold text-green-500 text-center mb-4" />
+            </StackLayout>
+
+            <!-- Save Button -->
+            <Button text="Save Meal" tap="{{ onSaveMeal }}" class="bg-green-500 text-white p-4 rounded-lg" 
+                    isEnabled="{{ analysisComplete }}" />
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -1,0 +1,16 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="bg-gray-100">
+    <ActionBar title="Register" class="bg-green-500 text-white">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+    </ActionBar>
+    
+    <ScrollView>
+        <StackLayout class="p-6">
+            <TextField hint="Full Name" text="{{ fullName }}" class="input mb-4 p-4 bg-white rounded-lg" />
+            <TextField hint="Email" text="{{ email }}" keyboardType="email" class="input mb-4 p-4 bg-white rounded-lg" />
+            <TextField hint="Password" text="{{ password }}" secure="true" class="input mb-4 p-4 bg-white rounded-lg" />
+            <TextField hint="Confirm Password" text="{{ confirmPassword }}" secure="true" class="input mb-6 p-4 bg-white rounded-lg" />
+            
+            <Button text="Register" tap="{{ onRegister }}" class="btn bg-green-500 text-white p-4 rounded-lg" />
+        </StackLayout>
+    </ScrollView>
+</Page>

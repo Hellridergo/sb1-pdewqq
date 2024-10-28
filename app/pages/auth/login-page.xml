@@ -1,0 +1,20 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="bg-gray-100">
+    <ActionBar title="K-lories" class="bg-green-500 text-white" />
+    
+    <StackLayout class="p-6">
+        <Image src="~/assets/logo.png" class="h-32 w-32 mb-8 self-center" />
+        
+        <TextField hint="Email" text="{{ email }}" keyboardType="email" class="input mb-4 p-4 bg-white rounded-lg" />
+        <TextField hint="Password" text="{{ password }}" secure="true" class="input mb-6 p-4 bg-white rounded-lg" />
+        
+        <Button text="Login" tap="{{ onLogin }}" class="btn mb-4 bg-green-500 text-white p-4 rounded-lg" />
+        <Button text="Sign in with Google" tap="{{ onGoogleLogin }}" class="btn mb-4 bg-white text-black p-4 rounded-lg" />
+        
+        <StackLayout orientation="horizontal" class="mb-4 justify-center">
+            <Label text="Don't have an account? " class="text-gray-600" />
+            <Label text="Register" tap="{{ onRegisterTap }}" class="text-green-500" />
+        </StackLayout>
+        
+        <Label text="Forgot Password?" tap="{{ onForgotPassword }}" class="text-center text-green-500" />
+    </StackLayout>
+</Page>

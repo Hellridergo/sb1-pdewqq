@@ -1,0 +1,54 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="bg-gray-100">
+    <ActionBar title="Statistics" class="bg-green-500 text-white">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Time Range Selector -->
+            <SegmentedBar selectedIndex="{{ selectedRangeIndex }}" class="mb-4">
+                <SegmentedBar.items>
+                    <SegmentedBarItem title="Week" />
+                    <SegmentedBarItem title="Month" />
+                    <SegmentedBarItem title="Year" />
+                </SegmentedBar.items>
+            </SegmentedBar>
+
+            <!-- Calories Chart -->
+            <GridLayout class="bg-white p-4 rounded-lg mb-4" height="300">
+                <WebView src="{{ chartHtml }}" />
+            </GridLayout>
+
+            <!-- Summary Stats -->
+            <GridLayout rows="auto, auto" columns="*, *" class="bg-white p-4 rounded-lg mb-4">
+                <StackLayout row="0" col="0" class="text-center p-2">
+                    <Label text="{{ averageCalories }}" class="text-2xl font-bold text-green-500" />
+                    <Label text="Daily Average" class="text-gray-600" />
+                </StackLayout>
+                <StackLayout row="0" col="1" class="text-center p-2">
+                    <Label text="{{ totalMeals }}" class="text-2xl font-bold text-green-500" />
+                    <Label text="Total Meals" class="text-gray-600" />
+                </StackLayout>
+                <StackLayout row="1" col="0" class="text-center p-2">
+                    <Label text="{{ highestDay }}" class="text-2xl font-bold text-green-500" />
+                    <Label text="Highest Day" class="text-gray-600" />
+                </StackLayout>
+                <StackLayout row="1" col="1" class="text-center p-2">
+                    <Label text="{{ goalAchievement }}%" class="text-2xl font-bold text-green-500" />
+                    <Label text="Goal Achievement" class="text-gray-600" />
+                </StackLayout>
+            </GridLayout>
+
+            <!-- Common Foods -->
+            <Label text="Most Common Foods" class="text-lg font-bold mb-2" />
+            <ListView items="{{ commonFoods }}" height="200" class="bg-white rounded-lg">
+                <ListView.itemTemplate>
+                    <GridLayout columns="*, auto" class="p-4">
+                        <Label text="{{ name }}" col="0" />
+                        <Label text="{{ count }} times" class="text-gray-600" col="1" />
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</Page>

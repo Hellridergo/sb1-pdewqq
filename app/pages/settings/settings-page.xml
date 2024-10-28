@@ -1,0 +1,35 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="bg-gray-100">
+    <ActionBar title="Settings" class="bg-green-500 text-white">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Profile Section -->
+            <Label text="Profile" class="text-lg font-bold mb-4" />
+            <TextField hint="Full Name" text="{{ fullName }}" class="input mb-4 p-4 bg-white rounded-lg" />
+            <TextField hint="Email" text="{{ email }}" isEnabled="false" class="input mb-4 p-4 bg-gray-100 rounded-lg" />
+            
+            <!-- Goals Section -->
+            <Label text="Goals" class="text-lg font-bold mb-4" />
+            <TextField hint="Daily Calorie Goal" text="{{ dailyCalorieGoal }}" keyboardType="number" class="input mb-4 p-4 bg-white rounded-lg" />
+            
+            <!-- Preferences Section -->
+            <Label text="Preferences" class="text-lg font-bold mb-4" />
+            <GridLayout columns="*, auto" class="mb-4 bg-white p-4 rounded-lg">
+                <Label text="Units" class="text-gray-700" col="0" />
+                <SegmentedBar selectedIndex="{{ selectedUnitIndex }}" col="1">
+                    <SegmentedBar.items>
+                        <SegmentedBarItem title="Metric" />
+                        <SegmentedBarItem title="Imperial" />
+                    </SegmentedBar.items>
+                </SegmentedBar>
+            </GridLayout>
+            
+            <!-- Account Section -->
+            <Label text="Account" class="text-lg font-bold mb-4" />
+            <Button text="Change Password" tap="{{ onChangePassword }}" class="mb-4 bg-white text-black p-4 rounded-lg" />
+            <Button text="Sign Out" tap="{{ onSignOut }}" class="mb-4 bg-red-500 text-white p-4 rounded-lg" />
+        </StackLayout>
+    </ScrollView>
+</Page>

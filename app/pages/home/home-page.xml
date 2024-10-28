@@ -1,0 +1,41 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="bg-gray-100">
+    <ActionBar title="K-lories Dashboard" class="bg-green-500 text-white">
+        <ActionItem tap="{{ onSettings }}" ios.position="right" android.position="actionBar">
+            <Label text="&#xf013;" class="fas text-xl" />
+        </ActionItem>
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Daily Summary Card -->
+            <GridLayout rows="auto" columns="*, *" class="bg-white p-4 rounded-lg mb-4">
+                <StackLayout col="0" class="text-center">
+                    <Label text="{{ dailyCalories }}" class="text-2xl font-bold text-green-500" />
+                    <Label text="Calories Today" class="text-gray-600" />
+                </StackLayout>
+                <StackLayout col="1" class="text-center">
+                    <Label text="{{ remainingCalories }}" class="text-2xl font-bold" />
+                    <Label text="Remaining" class="text-gray-600" />
+                </StackLayout>
+            </GridLayout>
+
+            <!-- Add Meal Button -->
+            <Button text="+ Add Meal" tap="{{ onAddMeal }}" class="bg-green-500 text-white p-4 rounded-lg mb-4" />
+
+            <!-- Today's Meals -->
+            <Label text="Today's Meals" class="text-lg font-bold mb-2" />
+            <ListView items="{{ todaysMeals }}" class="list-group" height="300">
+                <ListView.itemTemplate>
+                    <GridLayout columns="auto, *, auto" class="list-group-item p-2">
+                        <Image src="{{ imageUrl }}" width="60" height="60" class="rounded-lg" col="0" />
+                        <StackLayout col="1" class="ml-2">
+                            <Label text="{{ name }}" class="font-semibold" />
+                            <Label text="{{ time }}" class="text-gray-600" />
+                        </StackLayout>
+                        <Label text="{{ calories }} cal" class="text-green-500" col="2" />
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</Page>
